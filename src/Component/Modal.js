@@ -2,11 +2,13 @@ import React from 'react';
 
 const Modal = (props) => {
     return (
-        <div>
+        <div className='bg'>
             <div className='modal' style={{backgroundColor : props.color}}>
-                <h4>{props.name[props.title]}</h4>
-                <p>상세 내용</p>
+                <p className='delete' style={{textAlign : 'right'}}>X</p>
+                <h4 style={{textAlign : 'center'}}>{props.name[props.title]}</h4>
+                <p style={{textAlign : 'center', fontSize: '12px'}}>{props.date}</p>
             </div>
+            
         </div>
     );
 };
