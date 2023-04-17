@@ -8,12 +8,26 @@ function App() {
   let [like, setLike] = useState([0, 0, 0]);
   let [modal, setModal] = useState(false);
   let [title, setTitle] = useState(0);
+  let [input, setInput] = useState('');
+
+  let write =  function(){
+    if(input == '' || input == null || input == undefined){
+      alert('제목을 입력하세요')
+    }else{
+      let copyA = [...a];
+      copyA.unshift(input);
+      setA(copyA);
+      let copyLike2 = [...like];
+      copyLike2.unshift(0);
+      setLike(copyLike2);
+    }
+  }
 
 
   return (
     <div className="App">
       <div className='black-nav'>
-        <h4>박세리 Blog</h4>
+        <h4>I CAN (TO) DO IT</h4>
       </div>
       {
         a.map(function(parm, i){
@@ -21,20 +35,31 @@ function App() {
             <div className='list'>
               <h4 onClick={()=>{
                 setTitle(i);
-                setModal(modal == true ? modal = false : modal = true)}}>
-                {a[i]}
-              </h4>
-              <span onClick={()=>{
+                setModal(modal == true ? modal = false : modal = true)
+              }}>{a[i]}</h4><span onClick={()=>{
                 let copyLike = [...like];
                 copyLike[i] = copyLike[i] + 1;
-                setLike(copyLike)}}>😎
-              </span> {like[i]}
-              <p>4월 12일 발행</p>
+                setLike(copyLike)}}>😎</span> {like[i]}
+              {/* <p>글쓴이 : 주인장</p> */}
+              <button onClick={()=>{
+                let copyA2 = [...a];
+                copyA2.splice(i, 1);
+                setA(copyA2);
+              }}>Delete</button>
             </div>
           )
         })
       }
-      {modal == true ? <Modal color="#ffc83d" name={a} title={title} /> : null}
+      <div className='input'>
+        <h4>New</h4>
+        <input type="text"  onChange={(e)=>{
+          setInput(e.target.value);
+        }}/>
+        <button onClick={write}>글쓰기</button>
+        {
+          modal == true ? <Modal color="yellow" name={a} title={title} /> : null
+        }
+      </div>
     </div>
   );
 }
