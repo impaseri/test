@@ -20,7 +20,7 @@ function App() {
 
   let write =  function(){
     if(input == '' || input == null || input == undefined){
-      alert('제목을 입력하세요')
+      alert('할 일을 입력하세요')
     }else{
       let copyA = [...a];
       copyA.unshift(input);
