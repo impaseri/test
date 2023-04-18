@@ -11,6 +11,7 @@ function App() {
   let [title, setTitle] = useState(0);
   let [input, setInput] = useState('');
   let date = new Date();
+  let del = false;
 
   let year = date.getFullYear();
   let month = ('0' + (date.getMonth() + 1)).slice(-2);
@@ -70,7 +71,7 @@ function App() {
 
       </div>
       {
-          modal == true ? <Modal name={a} title={title} date={dateStr} /> : null
+          modal == true ? <Modal name={a} title={title} date={dateStr} del={setModal}/> : null
         }
     </div>
   );
